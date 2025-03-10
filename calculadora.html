@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Especial</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            overflow: hidden;
+            position: relative;
+        }
+        #message {
+            font-size: 24px;
+            display: none;
+            position: absolute;
+            text-align: center;
+            color: #ff4081;
+        }
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 24px;
+            animation: rise 3s forwards;
+        }
+        @keyframes rise {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-200px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="message">Gracias por existir</div>
+
+    <script>
+        function showHearts() {
+            const heartCount = 10; // Número de corazones
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw'; // Posición aleatoria
+                heart.style.bottom = '0';
+                document.body.appendChild(heart);
+                // Eliminar el corazón después de la animación
+                setTimeout(() => {
+                    heart.remove();
+                }, 3000);
+            }
+        }
+
+        // Realizar la operación
+        const result = 12 + 3 + 2011;
+        if (result === 2026) {
+            document.getElementById('message').style.display = 'block';
+            showHearts();
+        }
+    </script>
+
+</body>
+</html>
